@@ -24,6 +24,43 @@
       // 身上本金有 ${money} 元參加抽獎，抽一次 ${pay} 元，獎項有：銘謝惠顧(0元)、50元、100元、150元
       // 抽到本金不夠即停止，提示使用者是否重玩
       // 印出 抽獎次數、抽獎結果與剩餘金額
+
+      let money = 1000;
+      let pay = 100;
+      let playTimes = 0;
+
+      let btn = document.getElementById("lottery");
+      btn.addEventListener("click", function () {
+        //check money
+        if (money < pay) {
+          // if (window.confirm("Restart?")) {
+          if (true) {
+            console.log("------Restart------");
+            money = 1000;
+            playTimes = 0;
+          }
+          console.log(`已重新設定金額，剩餘金額${money}元`);
+
+          return;
+        }
+
+        //抽獎
+        let lotteryMoney = (Math.floor(Math.random() * 4) % 4) * 50;
+        //0~0.999... *4 = 0~3.999...
+        money -= pay;
+        playTimes++;
+        money += lotteryMoney;
+        console.log(`第${playTimes}次抽獎，剩餘金額${money}元`);
+      });
+
+      let autoClick = setInterval(function () {
+        if (money < 2000) {
+          btn.click();
+        } else {
+          clearInterval(autoClick);
+          window.confirm("got it");
+        }
+      }, 1);
     </script>
   </body>
 </html>
