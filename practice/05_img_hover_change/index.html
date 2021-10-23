@@ -28,6 +28,21 @@
         <img id="golden" src="../images/head.png" width="100" />
       </div>
     </div>
-    <script></script>
+    <script>
+      //mouseover
+      let mouseOver = function () {
+        this.src = `../images/${this.id}.png`;
+      };
+
+      //mouseout
+      let mouseOut = function () {
+        this.src = "../images/head.png";
+      };
+
+      document.querySelectorAll(".head > img").forEach(function (item, index) {
+        item.addEventListener("mouseover", mouseOver);
+        item.addEventListener("mouseout", mouseOut);
+      });
+    </script>
   </body>
 </html>

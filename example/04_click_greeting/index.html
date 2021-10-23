@@ -21,10 +21,10 @@
       <div id="greeting" class="button">問候</div>
     </div>
     <script>
-      let who = document.getElementById('greeting')
-      let when = 'click'
+      let who = document.getElementById('greeting');
+      let when = 'click';
       let what = function () {
-        let name
+        let name;
         if (window.confirm('願意告訴我你的稱呼嗎？')) {
           name = window.prompt('請輸入姓名：', '')
           name = name.trim() || '無名氏'

@@ -21,9 +21,17 @@
       <div id="greeting" class="button">問候</div>
     </div>
     <script>
-      let who
-      let when
-      let what
+      let who = document.getElementById("greeting");
+      let when = "click";
+      let what = function () {
+        name = window.prompt("name?") || "無名氏";
+        name = name.trim();
+        console.log(name);
+
+        window.confirm(`Hi! ${name}`);
+      };
+
+      who.addEventListener(when, what);
     </script>
   </body>
 </html>
