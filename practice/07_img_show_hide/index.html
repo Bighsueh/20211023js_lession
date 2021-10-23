@@ -92,6 +92,61 @@
         </div>
       </div>
     </div>
-    <script></script>
+    <script>
+      // (function () {
+      let now = 0;
+
+      let allImages = document.querySelectorAll(".imgList > img");
+      let allPoints = document.querySelectorAll(".imgNav > div > a");
+      let prev = document.querySelector("#prev");
+      let next = document.querySelector("#next");
+
+      prev.addEventListener("click", changeNow);
+      next.addEventListener("click", changeNow);
+      allPoints.forEach((point) => {
+        point.addEventListener("click", changeNow);
+      });
+
+      changeNow();
+      function changeNow() {
+        switch (this.id) {
+          case "prev":
+            now--;
+            break;
+          case "next":
+            now++;
+            break;
+          default:
+            let num = parseInt(this.id.substr(6));
+            if (document.getElementById("image" + num)) now = num;
+        }
+        now = (now + 8) % 8;
+        changeView();
+      }
+
+      function changeView() {
+        allImages.forEach(function (item, index) {
+          if (index === now) {
+            //顯示
+            item.style.display = "";
+          } else {
+            //刪除
+            item.style.display = "none";
+          }
+
+          allPoints.forEach(function (item, index) {
+            if (index === now) {
+              //藍色
+              item.classList.add("active");
+            } else {
+              //白色
+              item.classList.remove("active");
+            }
+          });
+        });
+      }
+
+      // })();
+    </script>
   </body>
 </html>
