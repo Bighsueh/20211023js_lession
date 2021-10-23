@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>14_slide_list</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <style>
+      .bg-js {
+        background-color: gold;
+      }
+      .bg-vue {
+        background-color: seagreen;
+      }
+      .course {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+      .course > h3 {
+        margin: 0;
+        padding: 5px 0;
+        color: white;
+        cursor: pointer;
+        user-select: none;
+      }
+      .course > div {
+        background-color: rgba(255, 255, 255, 0.5);
+        text-align: center;
+      }
+      .course > div > a {
+        display: inline-block;
+        width: 20%;
+        margin: 10px;
+      }
+      .course > div > a > img {
+        width: 100%;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div class="course bg-js">
+        <h3>深入淺出 Javascript30 快速導覽</h3>
+        <div>
+          <a
+            href="https://www.youtube.com/watch?v=f2ttaeDHzwE&list=PLEfh-m_KG4dYbxVoYDyT_fmXZHnuKg2Fq&index=1"
+            target="_blank"
+          >
+            <img src="../images/js30/1.jpg" alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=O1YsB3qxO4g&list=PLEfh-m_KG4dYbxVoYDyT_fmXZHnuKg2Fq&index=2"
+            target="_blank"
+          >
+            <img src="../images/js30/2.jpg" alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=fIE2Lmfbo4k&list=PLEfh-m_KG4dYbxVoYDyT_fmXZHnuKg2Fq&index=3"
+            target="_blank"
+          >
+            <img src="../images/js30/3.jpg" alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=8JzVwrzkUrM&list=PLEfh-m_KG4dYbxVoYDyT_fmXZHnuKg2Fq&index=4"
+            target="_blank"
+          >
+            <img src="../images/js30/4.jpg" alt="" />
+          </a>
+        </div>
+      </div>
+      <div class="course bg-vue">
+        <h3>Vue.js 手牽手，一起嗑光全家桶</h3>
+        <div>
+          <a
+            href="https://www.youtube.com/watch?v=yo1zTr2b2FY&list=PLEfh-m_KG4dYor8h4Hi2lqKJ0xqNTFh16&index=1"
+            target="_blank"
+          >
+            <img src="../images/vue/1.jpg" alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=HMAGqMkIUfY&list=PLEfh-m_KG4dYor8h4Hi2lqKJ0xqNTFh16&index=2"
+            target="_blank"
+          >
+            <img src="../images/vue/2.jpg" alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=VW4RZSKqIEE&list=PLEfh-m_KG4dYor8h4Hi2lqKJ0xqNTFh16&index=3"
+            target="_blank"
+          >
+            <img src="../images/vue/3.jpg" alt="" />
+          </a>
+          <a
+            href="https://www.youtube.com/watch?v=68ItsYcqjHI&list=PLEfh-m_KG4dYor8h4Hi2lqKJ0xqNTFh16&index=4"
+            target="_blank"
+          >
+            <img src="../images/vue/4.jpg" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $('.course > div').hide()
+        $('.course > h3').click(function () {
+          $(this).next().slideToggle().parent().siblings().children('div').slideUp()
+        })
+      })
+    </script>
+  </body>
+</html>

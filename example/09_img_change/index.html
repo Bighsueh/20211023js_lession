@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>09_img_change</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <style>
+      #slideshow {
+        position: relative;
+        width: 550px;
+        height: 300px;
+        margin: 0 auto;
+      }
+      #slideshow > .imgNav {
+        display: flex;
+        justify-content: center;
+      }
+      #slideshow > .imgNav > a {
+        font-size: 12px;
+        display: inline-block;
+        margin: 10px;
+        padding: 5px 10px;
+        border-radius: 10px;
+        text-decoration: none;
+        color: rgb(59, 89, 152);
+        background-color: white;
+      }
+      #slideshow > .imgNav a:hover,
+      #slideshow > .imgNav a.active {
+        color: white;
+        background-color: rgb(59, 89, 152);
+      }
+      #slideshow > .imgNav > div {
+        display: flex;
+        align-items: center;
+      }
+      #slideshow > .imgNav > div > a {
+        width: 20px;
+        height: 20px;
+        border-radius: 10px;
+        color: rgb(59, 89, 152);
+        background-color: white;
+        margin: 10px;
+      }
+      #slideshow > .imgNav > ul > li {
+        display: inline-block;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div id="slideshow">
+        <img src="../images/children/0.jpg" alt="" id="image" />
+        <div class="imgNav">
+          <div>
+            <a href="javascript:;" id="button0"></a>
+            <a href="javascript:;" id="button1"></a>
+            <a href="javascript:;" id="button2"></a>
+            <a href="javascript:;" id="button3"></a>
+            <a href="javascript:;" id="button4"></a>
+            <a href="javascript:;" id="button5"></a>
+            <a href="javascript:;" id="button6"></a>
+            <a href="javascript:;" id="button7"></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(function () {
+        $('.imgNav a').click(function () {
+          let num = this.id.substr(6)
+          $('#image').attr('src', '../images/children/' + num + '.jpg')
+          // document.getElementById("image").src = "../images/children/" + num + ".jpg";
+          $('.imgNav a').removeClass('active')
+          $(this).addClass('active')
+        })
+        $('#button0').click()
+      })
+    </script>
+  </body>
+</html>

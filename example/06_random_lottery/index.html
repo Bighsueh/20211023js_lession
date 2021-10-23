@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>06_random_lottery</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div id="lottery" class="button">抽獎</div>
+    </div>
+    <script>
+      // 身上本金有 ${money} 元參加抽獎，抽一次 ${pay} 元，獎項有：銘謝惠顧(0元)、50元、100元、150元
+      // 抽到本金不夠即停止，提示使用者是否重玩
+      // 印出 抽獎次數、抽獎結果與剩餘金額
+      let money = 1000
+      let pay = 100
+      let playTimes = 0
+      console.clear()
+      document.getElementById('lottery').addEventListener('click', function () {
+        if (money < pay) {
+          if (window.confirm('不夠錢了，是否重設紀錄?')) {
+            money = 1000
+            playTimes = 0
+            console.clear()
+          }
+        } else {
+          playTimes++
+          money -= pay
+          let lotteryMoney = (Math.floor(Math.random() * 4) % 4) * 50
+          money += lotteryMoney
+          console.log(
+            `第 ${playTimes} 次: 抽中 ${lotteryMoney ? lotteryMoney + ' 元' : '銘謝惠顧'} ！身上還剩 ${money} 元。`
+          )
+        }
+      })
+    </script>
+  </body>
+</html>

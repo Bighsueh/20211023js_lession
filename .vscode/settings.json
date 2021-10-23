@@ -1,0 +1,12 @@
+{
+  "explorer.openEditors.visible": 0,
+  "window.zoomLevel": 3,
+  "files.autoSave": "afterDelay",
+  "editor.tabSize": 2,
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "emmet.triggerExpansionOnTab": true,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "liveServer.settings.ignoreFiles": [".vscode/**", "**/*.json"],
+  "prettier.printWidth": 120
+}

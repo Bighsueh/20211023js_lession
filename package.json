@@ -1,0 +1,12 @@
+{
+  "name": "jsjq12",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install": "npm install -g json-server",
+    "json": "json-server --watch ./data/db.json"
+  },
+  "author": "",
+  "license": "ISC"
+}

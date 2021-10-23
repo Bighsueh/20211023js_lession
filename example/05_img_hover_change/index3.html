@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>05_img_hover_change</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div class="head">
+        <img id="bronze" src="../images/head.png" width="100" />
+      </div>
+      <div class="head">
+        <img id="silver" src="../images/head.png" width="100" />
+      </div>
+      <div class="head">
+        <img id="golden" src="../images/head.png" width="100" />
+      </div>
+    </div>
+    <script>
+      function mouseoverHandler() {
+        console.log('in')
+        let img = this.querySelector('img')
+        img.src = `../images/${img.id}.png`
+      }
+      function mouseoutHandler() {
+        console.log('out')
+        this.querySelector('img').src = '../images/head.png'
+      }
+
+      // [...document.getElementsByClassName("head")].forEach(function(who) {
+      document.querySelectorAll('.head').forEach(function (who) {
+        // who.addEventListener("mouseover", mouseoverHandler);
+        // who.addEventListener("mouseout", mouseoutHandler);
+        who.addEventListener('mouseenter', mouseoverHandler)
+        who.addEventListener('mouseleave', mouseoutHandler)
+      })
+    </script>
+  </body>
+</html>

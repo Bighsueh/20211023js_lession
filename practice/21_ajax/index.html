@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>21_ajax</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.css" />
+    <style></style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <canvas id="chartDom" width="800" height="400"></canvas>
+      <form id="input">
+        <input type="text" name="name" placeholder="姓名" required />
+        <input type="number" name="ch" placeholder="國文" required />
+        <input type="number" name="en" placeholder="英文" required />
+        <input type="number" name="ma" placeholder="數學" required />
+        <div class="button">送出</div>
+      </form>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(function () {
+        let chart
+        function createChart(data) {
+          chart = new Chart($('#chartDom'), {
+            type: 'line',
+            data: {
+              labels: data.map((item) => item.name),
+              datasets: [
+                {
+                  label: '國文',
+                  data: data.map((item) => item.ch),
+                  borderColor: 'red',
+                  backgroundColor: 'rgba(255,0,0,0.1)',
+                  lineTension: 0,
+                },
+                {
+                  label: '英文',
+                  data: data.map((item) => item.en),
+                  borderColor: 'green',
+                  backgroundColor: 'rgba(0,255,0,0.1)',
+                  lineTension: 0,
+                },
+                {
+                  label: '數學',
+                  data: data.map((item) => item.ma),
+                  borderColor: 'blue',
+                  backgroundColor: 'rgba(0,0,255,0.1)',
+                  lineTension: 0,
+                },
+              ],
+            },
+            options: {
+              legend: {
+                labels: {
+                  fontColor: 'white',
+                  fontSize: 18,
+                },
+              },
+              scales: {
+                yAxes: [
+                  {
+                    ticks: {
+                      fontColor: 'white',
+                      beginAtZero: true,
+                    },
+                  },
+                ],
+                xAxes: [
+                  {
+                    ticks: {
+                      fontColor: 'white',
+                    },
+                  },
+                ],
+              },
+            },
+          })
+        }
+      })
+    </script>
+  </body>
+</html>

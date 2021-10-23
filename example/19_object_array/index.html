@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>19_object_array</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <style>
+      table {
+        width: 100%;
+        margin: 50px 0 20px 0;
+        color: #000;
+        background-color: #fff;
+        border: none;
+        border-collapse: collapse;
+      }
+      thead {
+        color: #fff;
+        background-color: #aaa;
+        font-weight: bolder;
+      }
+      table > tr.selected {
+        background-color: #eee;
+      }
+      table td {
+        padding: 5px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <table>
+        <thead>
+          <td data-sort="id">座號</td>
+          <td data-sort="name">姓名</td>
+          <td data-sort="ch">國文</td>
+          <td data-sort="en">英文</td>
+          <td data-sort="ma">數學</td>
+          <td data-sort="total">總分</td>
+        </thead>
+      </table>
+      <div id="reset" class="button">重設</div>
+      <div id="ch" class="button">國文 >= 75</div>
+      <div id="en" class="button">英文 >= 75</div>
+      <div id="ma" class="button">數學 >= 75</div>
+      <div id="total" class="button">平均 >= 75</div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(function () {
+        let sort = 'id'
+        let firstSelect = null
+        let classGrade = [
+          {
+            id: 1,
+            name: 'Lisa',
+            ch: 85,
+            en: 93,
+            ma: 63,
+          },
+          {
+            id: 2,
+            name: 'Brenda',
+            ch: 83,
+            en: 75,
+            ma: 66,
+          },
+          {
+            id: 3,
+            name: 'Alex',
+            ch: 82,
+            en: 72,
+            ma: 97,
+          },
+          {
+            id: 4,
+            name: 'Ricky',
+            ch: 73,
+            en: 62,
+            ma: 64,
+          },
+          {
+            id: 5,
+            name: 'John',
+            ch: 81,
+            en: 82,
+            ma: 76,
+          },
+        ]
+        let viewData = createViewData()
+
+        function createViewData() {
+          return classGrade.map(({ id, name, ch, en, ma }) => {
+            return {
+              id,
+              name,
+              ch,
+              en,
+              ma,
+              total: ch + en + ma,
+            }
+          })
+        }
+        function createDom({ id, name, ch, en, ma, total }) {
+          return `<tr>
+            <td>${id}</td>
+            <td>${name}</td>
+            <td>${ch}</td>
+            <td>${en}</td>
+            <td>${ma}</td>
+            <td>${total}</td>
+          </tr>`
+        }
+
+        function clear() {
+          $('table > tr').remove()
+        }
+
+        function changeView() {
+          clear()
+          viewData
+            .sort(function (a, b) {
+              let fix = sort === 'id' || sort === 'name' ? 1 : -1
+              let result = 0
+              if (sort === 'name') {
+                result = a.name > b.name ? 1 : a.name < b.name ? -1 : 0
+              } else {
+                result = a[sort] - b[sort]
+              }
+              return result * fix
+            })
+            .forEach((people) => {
+              $('table').append(createDom(people))
+            })
+        }
+
+        $('thead td').click(function () {
+          sort = $(this).data('sort')
+          changeView()
+        })
+
+        $('table').on('click', '> tr', function (e) {
+          $('table > tr').removeClass('selected')
+          if (firstSelect === null) {
+            firstSelect = $(this).index()
+          } else {
+            if (e.ctrlKey) {
+              let select = $(this).index()
+              $('table > tr')
+                .slice(Math.min(firstSelect, select) - 1, Math.max(firstSelect, select))
+                .addClass('selected')
+            }
+            firstSelect = null
+          }
+          $(this).addClass('selected')
+        })
+
+        $('.button').click(function () {
+          sort = 'id'
+          viewData = createViewData()
+          switch (this.id) {
+            case 'ch':
+            case 'en':
+            case 'ma':
+              viewData = viewData.filter((people) => {
+                return people[this.id] >= 75
+              })
+              break
+            case 'total':
+              viewData = viewData.filter(({ total }) => {
+                return total >= 75 * 3
+              })
+              break
+          }
+          changeView()
+        })
+        changeView()
+      })
+    </script>
+  </body>
+</html>

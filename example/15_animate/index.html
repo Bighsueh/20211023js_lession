@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>15_animate</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+    <style>
+      .head{
+        margin: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div class="head">
+        <img src="../images/head.png" width="100" />
+      </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(function() {
+        let topLimit = $(window).height() - $('.head').outerHeight() - 1
+        let leftLimit = $(window).width() - $('.head').outerWidth() - 1
+        $('.head').css({
+          position:"absolute",
+          top:topLimit / 2,
+          left:leftLimit / 2,
+        })
+
+        $('.head').click(function(){
+          $(this).animate({
+            top:0,
+            left:0,
+          },800).delay(250).animate({
+            top:0,
+            left:leftLimit
+          },800).delay(250).animate({
+            top:topLimit,
+            left:leftLimit
+          },800).delay(250).animate({
+            top:topLimit,
+            left:0
+          },800).delay(250).animate({
+            top:topLimit / 2,
+            left:leftLimit / 2
+          },800)
+        })
+      });
+    </script>
+  </body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>20_card_flip</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <style>
+    .card {
+      position: relative;
+      display: inline-block;
+      box-sizing: border-box;
+      width: 120px;
+      height: 120px;
+      margin: 10px;
+      user-select: none;
+      transform-style: preserve-3d;
+      transition: transform 0.5s;
+    }
+
+    .card.open {
+      transform: rotateY(180deg);
+    }
+    .card > div {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      backface-visibility: hidden;
+      background-size: 80%;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #fff;
+    }
+
+    .front {
+      background-image: url('../images/head.png');
+      z-index: 9;
+    }
+
+    .back {
+      transform: rotateY(180deg);
+    }
+  </style>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div></div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script>
+      $(function () {
+        Array.prototype.shuffle = function () {
+          return this.sort((a, b) => {
+            return Math.floor(Math.random() * 3) - 1
+          })
+        }
+
+        let cards = [
+          { type: 'bronze' },
+          { type: 'bronze' },
+          { type: 'silver' },
+          { type: 'silver' },
+          { type: 'golden' },
+          { type: 'golden' },
+        ]
+        let open = null
+        let times = 0
+
+        function flipCard() {
+          let index = $(this).index()
+          let flip = cards[index]
+          if (!open) {
+            open = $(this)
+            handler = openedHandler
+          } else {
+            handler = checkHandler
+          }
+          $('.card')
+            .off('dblclick')
+            .eq(index)
+            .one('transitionend', handler)
+            .children('.back')
+            .css({ backgroundImage: 'url("../images/' + flip.type + '.png")' })
+            .parent()
+            .addClass('open')
+          times++
+        }
+
+        function openedHandler() {
+          $('.card').not('.open').on('dblclick', flipCard)
+          if ($('.card.open').length === cards.length) {
+            alert(`恭喜你!翻了 ${times} 次過關`)
+            init()
+          }
+        }
+
+        function checkHandler() {
+          let index = $(this).index()
+          let flip = cards[index]
+          if (flip.type != cards[open.index()].type) {
+            open.removeClass('open')
+            $(this).removeClass('open')
+          }
+          open = null
+          openedHandler()
+        }
+
+        function init() {
+          times = 0
+          $('.card').off().remove()
+          cards.shuffle().forEach(() => {
+            $('#container > div').append(`
+          <div class="card">
+            <div class="front"></div>
+            <div class="back"></div>
+          </div>`)
+          })
+          $('.card').on('dblclick', flipCard)
+        }
+
+        init()
+      })
+    </script>
+  </body>
+</html>

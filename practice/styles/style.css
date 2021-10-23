@@ -1,0 +1,89 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  color: white;
+  font-family: "Microsoft JhengHei";
+}
+html {
+  background-image: url("../images/wmbg.jpg");
+  background-repeat: repeat;
+  text-align: center;
+  height: 100%;
+}
+
+#container {
+  max-width: 960px;
+  margin: 50px auto;
+}
+h1 {
+  margin: 0;
+}
+
+.facebook,
+.youtube {
+  position: relative;
+  display: inline-block;
+  margin: 10px 20px;
+  text-decoration: none;
+  color: white;
+  font-weight: bolder;
+}
+.facebook:before,
+.youtube:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  content: "";
+  display: inline-block;
+  background-image: url(../images/social.png);
+  width: 55px;
+  height: 44px;
+  display: inline-block;
+  background-size: 160px auto;
+}
+.facebook:before {
+  background-position: 0 0;
+}
+.youtube:before {
+  background-position: 0 44px;
+}
+
+.facebook > span,
+.youtube > span {
+  margin: 7px 0 10px 54px;
+  line-height: 30px;
+  height: 30px;
+  padding: 0 10px;
+  display: inline-block;
+}
+
+.facebook > span {
+  background: rgb(59, 89, 152);
+}
+.youtube > span {
+  background: rgb(255, 0, 0);
+}
+
+.button {
+  display: inline-block;
+  margin: 10px;
+  padding: 10px;
+  text-decoration: none;
+  background: white;
+  color: black;
+  border-radius: 10px;
+  cursor: pointer;
+  user-select: none;
+}
+
+.head {
+  display: inline-block;
+  box-sizing: border-box;
+  margin: 10px;
+  background-color: white;
+  border: 10px solid white;
+}
+.head.active {
+  border-color: red;
+}

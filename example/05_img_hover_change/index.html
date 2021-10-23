@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>05_img_hover_change</title>
+    <link rel="stylesheet" href="../styles/style.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1>Javascript & Jquery快速入門與實戰</h1>
+      <p>
+        <a href="https://www.facebook.com/AlexOtakuWhat/" target="_blank" class="facebook">
+          <span>Alex宅幹嘛</span>
+        </a>
+        <a href="https://www.youtube.com/AlexOtakuWhat" target="_blank" class="youtube">
+          <span>Alex宅幹嘛</span>
+        </a>
+      </p>
+      <div class="head">
+        <img id="bronze" src="../images/head.png" width="100" />
+      </div>
+      <div class="head">
+        <img id="silver" src="../images/head.png" width="100" />
+      </div>
+      <div class="head">
+        <img id="golden" src="../images/head.png" width="100" />
+      </div>
+    </div>
+    <script>
+      let bronze = document.getElementById('bronze')
+      bronze.addEventListener('mouseover', function () {
+        bronze.src = '../images/bronze.png'
+      })
+      bronze.addEventListener('mouseout', function () {
+        bronze.src = '../images/head.png'
+      })
+
+      let silver = document.getElementById('silver')
+      silver.addEventListener('mouseover', function () {
+        silver.src = '../images/silver.png'
+      })
+      silver.addEventListener('mouseout', function () {
+        silver.src = '../images/head.png'
+      })
+
+      let golden = document.getElementById('golden')
+      golden.addEventListener('mouseover', function () {
+        golden.src = '../images/golden.png'
+      })
+      golden.addEventListener('mouseout', function () {
+        golden.src = '../images/head.png'
+      })
+    </script>
+  </body>
+</html>
