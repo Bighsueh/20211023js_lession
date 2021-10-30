@@ -93,6 +93,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(function () {
+        let timer;
         let now = 0;
         let imgs = $(".imgList img");
         let btns = $(".imgNav a");
@@ -108,10 +109,21 @@
         });
 
         function timerHandler(change = 1) {
+          clearTimeout(timer);
+
           now = (now + change) % imgs.length;
           setView();
           timer = setTimeout(timerHandler, 1000);
         }
+
+        $("#slideshow").hover(
+          function () {
+            clearTimeout(timer);
+          },
+          function () {
+            timerHandler(0);
+          }
+        );
 
         timerHandler(0);
       });
