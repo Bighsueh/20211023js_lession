@@ -45,6 +45,19 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script></script>
+    <script>
+      //1.做動畫的對象:img
+      //2.尋找的對象:.head
+      $(function () {
+        $(".head").hover(
+          function () {
+            $(this).find("img").animate({ top: -100 }, 500);
+          },
+          function () {
+            $(this).find("img").animate({ top: 0 }, 500);
+          }
+        );
+      });
+    </script>
   </body>
 </html>
