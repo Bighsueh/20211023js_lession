@@ -57,7 +57,7 @@
           })
           //.end()是回上一層的意思
           .end()
-          .filter(":even")
+          .not(":odd")
           .mouseenter(function () {
             $(this).find("img").animate({ top: 100 }, 500);
           });
