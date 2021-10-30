@@ -44,14 +44,23 @@
             $(this).addClass("active");
           }
         })
-        .mouseenter(function () {
-          let img = $(this).find("img");
-          img.attr("src", `../images/${img.attr("id")}.png`);
-          // $(this).find("img").attr("src", "../images/golden.png");
-        })
-        .mouseleave(function () {
-          $(this).find("img").attr("src", "../images/head.png");
-        });
+        // .mouseenter(function () {
+        //   let img = $(this).find("img");
+        //   img.attr("src", `../images/${img.attr("id")}.png`);
+        //   // $(this).find("img").attr("src", "../images/golden.png");
+        // })
+        // .mouseleave(function () {
+        //   $(this).find("img").attr("src", "../images/head.png");
+        // })
+        .hover(
+          function () {
+            let img = $(this).find("img");
+            img.attr("src", `../images/${img.attr("id")}.png`);
+          },
+          function () {
+            $(this).find("img").attr("src", "../images/head.png");
+          }
+        );
     </script>
   </body>
 </html>
