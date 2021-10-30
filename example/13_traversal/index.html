@@ -119,6 +119,8 @@
           <li>Chris</li>
         </ul>
       </div>
+      <div class="button">.filter()</div>
+      <div class="button">.not()</div>
       <div class="button">.eq()</div>
       <div class="button">.first()</div>
       <div class="button">.last()</div>
@@ -163,23 +165,23 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(function () {
-        $('#starter').change(() => {
-          $('#classroom li').removeClass('starter').eq($('#starter').val()).addClass('starter')
-        })
-        $('.button').click(function () {
-          if (this.id === 'submit') {
-            $('#classroom li').removeClass('target')
-            let target = eval(`$(".starter")${$('#code').val()}`)
-            target.addClass('target')
-          } else if (this.id === 'clear') {
-            $('#code').val('')
-            $('#classroom li').removeClass('target')
+        $("#starter").change(() => {
+          $("#classroom li").removeClass("starter").eq($("#starter").val()).addClass("starter");
+        });
+        $(".button").click(function () {
+          if (this.id === "submit") {
+            $("#classroom li").removeClass("target");
+            let target = eval(`$(".starter")${$("#code").val()}`);
+            target.addClass("target");
+          } else if (this.id === "clear") {
+            $("#code").val("");
+            $(".target").removeClass("target");
           } else {
-            let code = $('#code').val()
-            $('#code').val(`${code}${$(this).text()}`)
+            let code = $("#code").val();
+            $("#code").val(`${code}${$(this).text()}`);
           }
-        })
-      })
+        });
+      });
     </script>
   </body>
 </html>
