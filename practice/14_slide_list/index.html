@@ -112,11 +112,15 @@
     <script>
       $(function () {
         //hide() display none
-        $(".course").children("div").hide();
-
-        $(".course").click(function () {
-          $(this).children("div").toggle().parent().siblings().children("div").hide();
-        });
+        $(".course")
+          .children("div")
+          .hide()
+          .end()
+          .children("h3")
+          .click(function () {
+            $(this).next().slideToggle(250).parent().siblings().children("div").slideUp(250);
+            // $(this).children("div").toggle().parent().siblings().children("div").hide().slipeUp();
+          });
       });
     </script>
   </body>
