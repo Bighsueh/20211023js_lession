@@ -30,13 +30,28 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-      $(".head").click(function () {
-        //js toggle
-        this.classList.toggle("active");
-
-        //jquery toggle
-        // $(this).toggleClass("active");
-      });
+      $(".head")
+        .click(function () {
+          //   //js toggle
+          //   this.classList.toggle("active");
+          //
+          //   //jquery toggle
+          //   // $(this).toggleClass("active");
+          // });
+          if ($(this).hasClass("active")) {
+            $(this).removeClass("active");
+          } else {
+            $(this).addClass("active");
+          }
+        })
+        .mouseenter(function () {
+          let img = $(this).find("img");
+          img.attr("src", `../images/${img.attr("id")}.png`);
+          // $(this).find("img").attr("src", "../images/golden.png");
+        })
+        .mouseleave(function () {
+          $(this).find("img").attr("src", "../images/head.png");
+        });
     </script>
   </body>
 </html>
