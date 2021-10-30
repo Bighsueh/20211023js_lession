@@ -57,50 +57,10 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-      let sort = "id";
-      let firstSelect = null;
-      let classGrade = [
-        {
-          id: 1,
-          name: "Lisa",
-          ch: 85,
-          en: 93,
-          ma: 63,
-        },
-        {
-          id: 2,
-          name: "Brenda",
-          ch: 83,
-          en: 75,
-          ma: 66,
-        },
-        {
-          id: 3,
-          name: "Alex",
-          ch: 82,
-          en: 72,
-          ma: 97,
-        },
-        {
-          id: 4,
-          name: "Ricky",
-          ch: 73,
-          en: 62,
-          ma: 64,
-        },
-        {
-          id: 5,
-          name: "John",
-          ch: 81,
-          en: 82,
-          ma: 76,
-        },
-      ];
-      let viewData = createViewData(classGrade);
-
+      let viewData;
       // console.log(viewData);
-      function createViewData() {
-        return classGrade.map(({ id, name, ch, en, ma }) => {
+      function createViewData(data) {
+        return data.map(({ id, name, ch, en, ma }) => {
           return {
             id,
             name,
@@ -131,7 +91,6 @@
           $("table").append(createDom(element));
         });
       }
-      changeView();
 
       //XMLHttpRequest 世界難用
       //fetch 比較好用:D
@@ -141,6 +100,8 @@
         method: "get",
         success: function (data) {
           console.log(data);
+          viewData = createViewData(data);
+          changeView();
         },
         fail: function (err) {
           console.log(err);
