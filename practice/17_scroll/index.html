@@ -12,6 +12,7 @@
         top: 150px;
         overflow: hidden;
       }
+
       #nav {
         position: fixed;
         background-color: #333;
@@ -22,6 +23,7 @@
         left: 0;
         z-index: 1;
       }
+
       a {
         color: white;
         display: inline-block;
@@ -29,14 +31,17 @@
         padding: 5px;
         border-radius: 5px;
       }
+
       a.active {
         color: #333;
         background-color: white;
         text-decoration: none;
       }
+
       section {
         padding: 25px 0 50px 0;
       }
+
       section > p {
         color: black;
         background-color: white;
@@ -46,6 +51,7 @@
         padding: 10px;
         text-align: justify;
       }
+
       section > p::first-letter {
         font-size: 45px;
         font-weight: border;
@@ -55,6 +61,7 @@
       }
     </style>
   </head>
+
   <body>
     <div id="nav">
       <h1>Javascript & Jquery快速入門與實戰</h1>
@@ -165,9 +172,11 @@
       $(function () {
         $("#nav a").click(function () {
           let target = $("#container").children("section").eq($(this).index());
-          $("html,body").animate({
-            scrollTop: target.offset().top - $("#nav").outerHeight(),
-          });
+          $("html,body")
+            .stop()
+            .animate({
+              scrollTop: target.offset().top - $("#nav").outerHeight(),
+            });
         });
 
         $("#goTop").click(function () {
@@ -176,6 +185,25 @@
             scrollTop: 0,
           });
         });
+        $(window)
+          .scroll(function () {
+            let target = 0;
+            let position = $(window).scrollTop() + $("#nav").outerHeight();
+            // console.log($(window).scrollTop());
+            $("#container")
+              .children("section")
+              .each(function (index, section) {
+                if (
+                  $(section).offset().top <= position &&
+                  $(section).offset().top + $(section).outerHeight() >= position
+                ) {
+                  target = index;
+                  console.log(target);
+                }
+              });
+            $("#nav a").eq(target).addClass("active").siblings().removeClass("active");
+          })
+          .scroll();
       });
     </script>
   </body>
