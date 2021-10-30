@@ -30,6 +30,20 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
+      $(function(){
+
+        //self 不包含 padding,border,margin
+        //inner 包含 padding
+        //outer 包含 padding,border
+        //outer(true) 包含padding,border,margin
+        let leftLimit = $(window).width() - $('.head').outerWidth()
+        let buttomLimit = $(window).height() - $('.head').outerHeight()
+        $('.head').css({
+          position : "absolute",
+          top : buttomLimit,
+          left : leftLimit
+        })
+      })
     </script>
   </body>
 </html>
