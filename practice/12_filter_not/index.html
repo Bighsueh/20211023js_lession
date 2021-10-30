@@ -54,6 +54,12 @@
           .filter(":odd")
           .mouseenter(function () {
             $(this).find("img").animate({ top: -100 }, 500);
+          })
+          //.end()是回上一層的意思
+          .end()
+          .filter(":even")
+          .mouseenter(function () {
+            $(this).find("img").animate({ top: 100 }, 500);
           });
 
         // .hover(
