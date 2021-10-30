@@ -59,18 +59,18 @@
     <div id="nav">
       <h1>Javascript & Jquery快速入門與實戰</h1>
       <p>
-        <a href="javasctipt:;">水瓶座</a>
-        <a href="javasctipt:;">雙魚座</a>
-        <a href="javasctipt:;">白羊座</a>
-        <a href="javasctipt:;">金牛座</a>
-        <a href="javasctipt:;">雙子座</a>
-        <a href="javasctipt:;">巨蟹座</a>
-        <a href="javasctipt:;">獅子座</a>
-        <a href="javasctipt:;">處女座</a>
-        <a href="javasctipt:;">天秤座</a>
-        <a href="javasctipt:;">天蠍座</a>
-        <a href="javasctipt:;">射手座</a>
-        <a href="javasctipt:;">魔羯座</a>
+        <a href="javascript:;">水瓶座</a>
+        <a href="javascript:;">雙魚座</a>
+        <a href="javascript:;">白羊座</a>
+        <a href="javascript:;">金牛座</a>
+        <a href="javascript:;">雙子座</a>
+        <a href="javascript:;">巨蟹座</a>
+        <a href="javascript:;">獅子座</a>
+        <a href="javascript:;">處女座</a>
+        <a href="javascript:;">天秤座</a>
+        <a href="javascript:;">天蠍座</a>
+        <a href="javascript:;">射手座</a>
+        <a href="javascript:;">魔羯座</a>
       </p>
     </div>
     <div id="container">
@@ -161,6 +161,22 @@
       <a id="goTop" href="javascript:;">回到頂端</a>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script></script>
+    <script>
+      $(function () {
+        $("#nav a").click(function () {
+          let target = $("#container").children("section").eq($(this).index());
+          $("html,body").animate({
+            scrollTop: target.offset().top - $("#nav").outerHeight(),
+          });
+        });
+
+        $("#goTop").click(function () {
+          //卷軸 回到0
+          $("html,body").animate({
+            scrollTop: 0,
+          });
+        });
+      });
+    </script>
   </body>
 </html>
