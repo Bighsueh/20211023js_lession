@@ -91,6 +91,22 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script></script>
+    <script>
+      $(function () {
+        let now = 0;
+        let imgs = $(".imgList img");
+        let btns = $(".imgNav a");
+
+        function setView() {
+          imgs.eq(now).fadeIn().siblings().fadeOut();
+          imgs.eq(now).addClass("active").siblings().removeClass("active");
+        }
+
+        btns.click(function () {
+          now = $(this).index();
+          setView();
+        });
+      });
+    </script>
   </body>
 </html>
