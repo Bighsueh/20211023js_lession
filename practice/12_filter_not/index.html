@@ -46,17 +46,27 @@
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
-      //1.做動畫的對象:img
-      //2.尋找的對象:.head
       $(function () {
-        $(".head").hover(
-          function () {
-            $(this).find("img").animate({ top: -100 }, 500);
-          },
-          function () {
+        $(".head")
+          .mouseleave(function () {
             $(this).find("img").animate({ top: 0 }, 500);
-          }
-        );
+          })
+          .filter(":odd")
+          .mouseenter(function () {
+            $(this).find("img").animate({ top: -100 }, 500);
+          });
+
+        // .hover(
+        //   //1.做動畫的對象:img
+        //   //2.尋找的對象:.head
+
+        //   function () {
+        //     $(this).find("img").animate({ top: -100 }, 500);
+        //   },
+        //   function () {
+        //     $(this).find("img").animate({ top: 0 }, 500);
+        //   }
+        // );
       });
     </script>
   </body>
