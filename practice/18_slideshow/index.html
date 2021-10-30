@@ -102,12 +102,18 @@
           btns.eq(now).addClass("active").siblings().removeClass("active");
         }
 
-        setView();
-
         btns.click(function () {
           now = $(this).index();
           setView();
         });
+
+        function timerHandler(change = 1) {
+          now = (now + change) % imgs.length;
+          setView();
+          timer = setTimeout(timerHandler, 1000);
+        }
+
+        timerHandler(0);
       });
     </script>
   </body>
