@@ -29,6 +29,14 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script></script>
+    <script>
+      $(".head").click(function () {
+        //js toggle
+        this.classList.toggle("active");
+
+        //jquery toggle
+        // $(this).toggleClass("active");
+      });
+    </script>
   </body>
 </html>
