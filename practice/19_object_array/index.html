@@ -133,6 +133,19 @@
       }
       changeView();
 
+      //XMLHttpRequest 世界難用
+      //fetch 比較好用:D
+
+      $.ajax({
+        url: "http://localhost:3000/class",
+        method: "get",
+        success: function (data) {
+          console.log(data);
+        },
+        fail: function (err) {
+          console.log(err);
+        },
+      });
     </script>
   </body>
 </html>
