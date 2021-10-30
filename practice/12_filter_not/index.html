@@ -47,20 +47,35 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script>
       $(function () {
-        $(".head")
-          .mouseleave(function () {
+        $(".head").hover(
+          function () {
+            let target;
+            if ($(this).index() % 2) {
+              target = -100;
+            } else {
+              target = 100;
+            }
+            $(this).find("img").animate({ top: target }, 500);
+          },
+          function () {
             $(this).find("img").animate({ top: 0 }, 500);
-          })
-          .filter(":odd")
-          .mouseenter(function () {
-            $(this).find("img").animate({ top: -100 }, 500);
-          })
-          //.end()是回上一層的意思
-          .end()
-          .not(":odd")
-          .mouseenter(function () {
-            $(this).find("img").animate({ top: 100 }, 500);
-          });
+          }
+        );
+
+        //filter
+        // .mouseleave(function () {
+        //   $(this).find("img").animate({ top: 0 }, 500);
+        // })
+        // .filter(":odd")
+        // .mouseenter(function () {
+        //   $(this).find("img").animate({ top: -100 }, 500);
+        // })
+        // //.end()是回上一層的意思
+        // .end()
+        // .not(":odd")
+        // .mouseenter(function () {
+        //   $(this).find("img").animate({ top: 100 }, 500);
+        // });
 
         // .hover(
         //   //1.做動畫的對象:img
