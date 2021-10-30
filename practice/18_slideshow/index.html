@@ -99,8 +99,10 @@
 
         function setView() {
           imgs.eq(now).fadeIn().siblings().fadeOut();
-          imgs.eq(now).addClass("active").siblings().removeClass("active");
+          btns.eq(now).addClass("active").siblings().removeClass("active");
         }
+
+        setView();
 
         btns.click(function () {
           now = $(this).index();
