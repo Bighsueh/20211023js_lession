@@ -44,6 +44,8 @@
             $(this).addClass("active");
           }
         })
+
+        //mouseenter,mouseleave
         // .mouseenter(function () {
         //   let img = $(this).find("img");
         //   img.attr("src", `../images/${img.attr("id")}.png`);
@@ -52,15 +54,22 @@
         // .mouseleave(function () {
         //   $(this).find("img").attr("src", "../images/head.png");
         // })
-        .hover(
-          function () {
-            let img = $(this).find("img");
-            img.attr("src", `../images/${img.attr("id")}.png`);
-          },
-          function () {
-            $(this).find("img").attr("src", "../images/head.png");
-          }
-        );
+
+        //hover(function int,function out)
+        // .hover(
+        //   function () {
+        //     let img = $(this).find("img");
+        //     img.attr("src", `../images/${img.attr("id")}.png`);
+        //   },
+        //   function () {
+        //     $(this).find("img").attr("src", "../images/head.png");
+        //   }
+        // )
+
+        //hover(function inout)
+        .hover(function () {
+          console.log("inout");
+        });
     </script>
   </body>
 </html>
