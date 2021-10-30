@@ -109,6 +109,15 @@
       </div>
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script></script>
+    <script>
+      $(function () {
+        //hide() display none
+        $(".course").children("div").hide();
+
+        $(".course").click(function () {
+          $(this).children("div").toggle().parent().siblings().children("div").hide();
+        });
+      });
+    </script>
   </body>
 </html>
